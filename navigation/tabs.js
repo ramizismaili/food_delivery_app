@@ -8,14 +8,18 @@ import { Home } from "../screens";
 
 import { COLORS, icons } from "../constants";
 import Svg, { Path } from "react-native-svg";
+
 const Tab = createBottomTabNavigator();
 
+// Custom button component for the bottom tab bar
 const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
   var isSelected = accessibilityState.selected;
 
+  // If the tab is selected, use a custom design for the tab button
   if (isSelected) {
     return (
       <View style={{ flex: 1, alignItems: "center" }}>
+        {/* The background design for the selected tab */}
         <View style={{ flexDirection: "row", position: "absolute", top: 0 }}>
           <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
           <Svg width={70} height={61} viewBox="0 0 75 61">
@@ -27,6 +31,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
           <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
         </View>
 
+        {/* The custom button */}
         <TouchableOpacity
           style={{
             top: -22.5,
@@ -44,6 +49,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
       </View>
     );
   } else {
+    // If the tab is not selected, use the default tab button design
     return (
       <TouchableOpacity
         style={{
@@ -60,18 +66,24 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
   }
 };
 
+// Custom bottom tab bar component
 const CustomTabBar = (props) => {
   return <BottomTabBar {...props.props} />;
 };
 
+// Main tabs component that renders the bottom tab bar and its buttons
 const Tabs = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
+      tabBarOptions={{
         showLabel: false,
         style: {
-          backgroundColor: "transparent",
+          position: "absolute",
+          left: 0,
+          bottom: 0,
+          right: 0,
           borderTopWidth: 0,
+          backgroundColor: "transparent",
           elevation: 0,
         },
       }}
@@ -81,6 +93,7 @@ const Tabs = () => {
         name="Home"
         component={Home}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image
               source={icons.cutlery}
@@ -99,6 +112,7 @@ const Tabs = () => {
         name="Search"
         component={Home}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image
               source={icons.search}
@@ -117,6 +131,7 @@ const Tabs = () => {
         name="Like"
         component={Home}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image
               source={icons.like}
@@ -135,6 +150,7 @@ const Tabs = () => {
         name="User"
         component={Home}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image
               source={icons.user}
