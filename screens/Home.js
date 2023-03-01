@@ -385,8 +385,10 @@ const Home = ({ navigation }) => {
               borderRadius: SIZES.radius,
             }}
           >
-            <Text style={{ ...FONTS.h3 }}>
-              {initialCurrentLocation.streetName}
+            <Text
+              style={{ ...FONTS.h3, color: COLORS.primary, fontWeight: "bold" }}
+            >
+              {initialCurrentLocation.streetName} 📍
             </Text>
           </View>
         </View>
