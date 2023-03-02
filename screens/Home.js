@@ -8,13 +8,18 @@ import {
   Image,
   FlatList,
 } from "react-native";
+import * as Font from 'expo-font';
+
 
 import { icons, images, SIZES, COLORS, FONTS } from "../constants";
 
 const Home = ({ navigation }) => {
+
+
+
   // DATAS
   const initialCurrentLocation = {
-    streetName: "Prishtina",
+    streetName: "Kuching",
     gps: {
       latitude: 1.5496614931250685,
       longitude: 110.36381866919922,
@@ -388,7 +393,7 @@ const Home = ({ navigation }) => {
             <Text
               style={{ ...FONTS.h3, color: COLORS.primary, fontWeight: "bold" }}
             >
-              {initialCurrentLocation.streetName} 📍
+              {initialCurrentLocation.streetName}
             </Text>
           </View>
         </View>
